@@ -41,6 +41,16 @@ export const getServerSideProps = async (pageContext) => {
   }
 }
 
+const changeToSeen = async (slug) => {
+  await fetch("/api/changeToSeen", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ slug }),
+  })
+}
+
 export default function Video({ video }) {
   const [watchin, setWatchin] = useState(false)
   return (
@@ -54,24 +64,28 @@ export default function Video({ video }) {
       )}
       {!watchin && (
         <div className='info'>
-          <p> {video.tags.join(", ")} </p>
-          <p> {video.description} </p>
-          <a href='/'>
-            {" "}
-            <p>Go Back</p>{" "}
+          <p className='info-links'> {video.tags.join(", ")} </p>
+          <p className='info-desc'> {video.description} </p>
+          <a className='info-back' href='/'>
+            <p>Go Back</p>
           </a>
           <button
-            className={"video-overlay"}
-            onClick={() => (watchin ? setWatchin(false) : setWatchin(true))}
+            className='video-overlay'
+            onClick={() => (
+              changeToSeen(video.slug),
+              watchin ? setWatchin(false) : setWatchin(true)
+            )}
           >
             PLAY
           </button>
         </div>
       )}
       {watchin && (
-        <video width='100%' controls>
-          <source src={video.mp4.url} type='video/mp4' />
-        </video>
+        <div className='cont-vid'>
+          <video width='60%' height='60%' controls muted autoPlay>
+            <source src={video.mp4.url} type='video/mp4' />
+          </video>
+        </div>
       )}
       <div
         className={"info-footer"}

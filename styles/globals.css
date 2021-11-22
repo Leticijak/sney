@@ -50,24 +50,78 @@ a {
 .navbar {
   height: 80px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
 }
 .video-image {
   width: 100%;
   position: absolute;
   top: 0;
+
+  filter: brightness(40%);
 }
 
 .info {
   position: relative;
-  margin-top: 30%;
-  margin-left: 50px;
+  margin-top: 20%;
+  margin-left: 20%;
   max-width: 50%;
 }
 
 .video-overlay {
   position: absolute;
+  padding: 15px 35px;
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  border-radius: 10px;
+  letter-spacing: 0.8px;
+  border: none;
+  cursor: pointer;
 }
 
 .info-footer {
   height: 100vh;
+}
+.account-info {
+  display: flex;
+  height: 50%;
+  margin-top: 10px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+.franchise {
+  width: 20%;
+
+  background-color: #808080;
+  margin: 5px;
+  border-radius: 10px;
+}
+.video-feed {
+  display: flex;
+}
+.logo-wrapper {
+  padding: 10px 30px;
+}
+.info-links {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  letter-spacing: 0.75px;
+}
+.info-desc {
+  font-size: 1.3rem;
+}
+
+.info-back {
+  font-size: 1.4rem;
+  color: pink;
+}
+.cont-vid {
+  text-align: center;
+  margin-top: 3rem;
 }
