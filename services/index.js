@@ -58,3 +58,19 @@ export const getVideo = async () => {
   const video = data.video
   return video
 }
+
+export const getAcc = async () => {
+  const aacountQuery = gql`
+    query {
+      account(where: { id: "ckwaf0ggg2r6p0e638rsfyrj2" }) {
+        username
+        avatar {
+          url
+        }
+      }
+    }
+  `
+  const accData = await graphQLClient.request(aacountQuery)
+  const account = accData.account
+  return account
+}
